@@ -1,7 +1,7 @@
 #!/bin/bash
 
 buildScript/lib/core/init.sh
-cd ..
+cd ../dun
 rm -rf sing-box
 #git clone -b building https://github.com/PuerNya/sing-box.git sing-box
 #git clone -b dev-next-yaott https://github.com/CHIZI-0618/sing-box.git sing-box
@@ -65,7 +65,7 @@ cd ..
 go mod tidy
 #cd ../nacs/libcore/.build/src
 #go mod tidy
-cd ../nacs/libcore
+cd ../../nacs/libcore
 awk '{if(index($0, "// replace github.com/sagernet/sing =>") > 0) $0 = "replace github.com/sagernet/sing => ../../sing"}1' go.mod > temp_file && mv -f temp_file go.mod
 awk '{if ($0 ~ /\/\/ replace github\.com\/sagernet\/sing-dns => \.\.\/\.\.\/sing-dns/) {print "// replace github.com/sagernet/sing-dns => ../../sing-dns"; print ""; print "replace github.com/sagernet/sing-quic => ../../sing-quic"} else {print $0}}' go.mod > temp_file && mv -f temp_file go.mod
 go mod tidy
