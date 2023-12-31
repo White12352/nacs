@@ -18,6 +18,7 @@ rm -f common/bufio/addr_conn.go
 cd ../nacs/dun
 #svn co https://github.com/MatsuriDayo/sing-box/branches/1.6.a2/nekoutils sing-box/nekoutils
 #awk '/^replace/ && !found {print "replace github.com/sagernet/sing => ../sing"; found=1} 1' sing-box-extra/go.mod > go.mod.tmp && mv -f go.mod.tmp sing-box-extra/go.mod
+ls -la
 cd sing-box-extra
 go mod tidy
 cd ../sing-box
