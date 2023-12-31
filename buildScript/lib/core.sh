@@ -19,9 +19,10 @@ cd ../nacs/dun
 #svn co https://github.com/MatsuriDayo/sing-box/branches/1.6.a2/nekoutils sing-box/nekoutils
 #awk '/^replace/ && !found {print "replace github.com/sagernet/sing => ../sing"; found=1} 1' sing-box-extra/go.mod > go.mod.tmp && mv -f go.mod.tmp sing-box-extra/go.mod
 ls -la
-cd sing-box-extra
-go mod tidy
-cd ../sing-box
+#cd sing-box-extra
+#go mod tidy
+#cd ../sing-box
+cd sing-box
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ###git remote add MatsuriDayo https://github.com/MatsuriDayo/sing-box
