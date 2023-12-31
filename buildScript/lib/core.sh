@@ -2,19 +2,20 @@
 
 buildScript/lib/core/init.sh
 ls -la
-cd ../dun
+cd dun
 rm -rf sing-box
 #git clone -b building https://github.com/PuerNya/sing-box.git sing-box
 #git clone -b dev-next-yaott https://github.com/CHIZI-0618/sing-box.git sing-box
 git clone -b def https://github.com/xchacha20-poly1305/sing-box.git sing-box
+cd ../..
 git clone -b dev https://github.com/SagerNet/sing sing
-rm -f nacs/protocol/http/client.go
+rm -f sing/protocol/http/client.go
 git clone -b dev https://github.com/White12352/sing.git s
-cp -f s/protocol/http/client.go nacs/protocol/http
+cp -f s/protocol/http/client.go sing/protocol/http
 rm -rf s
 cd sing
 rm -f common/bufio/addr_conn.go
-cd ..
+cd ../nacs/dun
 #svn co https://github.com/MatsuriDayo/sing-box/branches/1.6.a2/nekoutils sing-box/nekoutils
 #awk '/^replace/ && !found {print "replace github.com/sagernet/sing => ../sing"; found=1} 1' sing-box-extra/go.mod > go.mod.tmp && mv -f go.mod.tmp sing-box-extra/go.mod
 cd sing-box-extra
@@ -66,7 +67,7 @@ cd ..
 go mod tidy
 #cd ../nacs/libcore/.build/src
 #go mod tidy
-cd ../../nacs/libcore
+cd ../libcore
 awk '{if(index($0, "// replace github.com/sagernet/sing =>") > 0) $0 = "replace github.com/sagernet/sing => ../../sing"}1' go.mod > temp_file && mv -f temp_file go.mod
 awk '{if ($0 ~ /\/\/ replace github\.com\/sagernet\/sing-dns => \.\.\/\.\.\/sing-dns/) {print "// replace github.com/sagernet/sing-dns => ../../sing-dns"; print ""; print "replace github.com/sagernet/sing-quic => ../../sing-quic"} else {print $0}}' go.mod > temp_file && mv -f temp_file go.mod
 go mod tidy
