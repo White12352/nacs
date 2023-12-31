@@ -15,7 +15,9 @@ cp -f s/protocol/http/client.go sing/protocol/http
 rm -rf s
 cd sing
 rm -f common/bufio/addr_conn.go
-cd ../nacs/dun
+cd ..
+cp -rf sing nacs/dun
+cd nacs/dun
 #svn co https://github.com/MatsuriDayo/sing-box/branches/1.6.a2/nekoutils sing-box/nekoutils
 #awk '/^replace/ && !found {print "replace github.com/sagernet/sing => ../sing"; found=1} 1' sing-box-extra/go.mod > go.mod.tmp && mv -f go.mod.tmp sing-box-extra/go.mod
 ls -la
@@ -62,7 +64,7 @@ awk '{if(index($0, "//replace github.com/sagernet/sing") > 0) $0 = "replace gith
 awk '/^replace/ && !found {print "replace github.com/sagernet/sing => ../../sing"; found=1} 1' sing-box/test/go.mod > go.mod.tmp && mv -f go.mod.tmp sing-box/test/go.mod
 #awk '/^replace/ && !found {print "replace github.com/sagernet/sing => ../../../../sing"; found=1} 1' nacs/libcore/.build/src/go.mod > go.mod.tmp && mv -f go.mod.tmp nacs/libcore/.build/src/go.mod
 #awk '/^replace/ && !found {print "replace github.com/sagernet/sing => ../../sing"; found=1} 1' nacs/libcore/go.mod > go.mod.tmp && mv -f go.mod.tmp nacs/libcore/go.mod
-git clone -b dev https://github.com/xchacha20-poly1305/sing-quic sing-quic
+#git clone -b dev https://github.com/xchacha20-poly1305/sing-quic sing-quic
 cd sing-box/test
 go mod tidy
 cd ..
